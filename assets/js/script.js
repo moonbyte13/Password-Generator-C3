@@ -125,7 +125,6 @@ function userData() {
     alert('INVALID, OUT OF PARAMETER');
     return;
   };
-
   // Criteria prompts
     lowercaseTrue = confirm('Do you want lowercase?');
     uppercaseTrue = confirm('Do you want uppercase?');
@@ -136,11 +135,11 @@ function userData() {
     alert('INVALID, NOT A STRONG ENOUGH PASSWORD');
     return;
   };
-  return;
-}
+  generatePassword();
+};
+
 // Password array
 let passArray = [];
-let orderLength = passLength;
 
 // Function generate password
 function generatePassword() {
@@ -185,7 +184,6 @@ function randomizer() {
 function writePassword() {
   passArray = ['']
   userData();
-  generatePassword();
   let password = passArray.join('');
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
