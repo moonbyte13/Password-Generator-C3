@@ -117,24 +117,26 @@ function userData() {
   // Password length prompt
   passLength = prompt('What length do you want the password to be?');
 
-  if (isNaN[passLength]) {
+  if (isNaN(passLength)) {
     alert('INVALID ENTRY, NOT A NUMBER');
     return;
   };
   if (passLength < 8 || passLength > 128) {
     alert('INVALID, OUT OF PARAMETER');
-    return; 
+    return;
   };
+
   // Criteria prompts
-  lowercaseTrue = confirm('Do you want lowercase?');
-  uppercaseTrue = confirm('Do you want uppercase?');
-  symbolsTrue = confirm('Do you want symbols?');
-  numbersTrue = confirm('Do you want numbers?');
+    lowercaseTrue = confirm('Do you want lowercase?');
+    uppercaseTrue = confirm('Do you want uppercase?');
+    symbolsTrue = confirm('Do you want symbols?');
+    numbersTrue = confirm('Do you want numbers?');
 
   if (lowercaseTrue == false && uppercaseTrue == false && symbolsTrue == false && numbersTrue == false) {
     alert('INVALID, NOT A STRONG ENOUGH PASSWORD');
-    return; 
+    return;
   };
+  return;
 }
 // Password array
 let passArray = [];
@@ -187,7 +189,6 @@ function writePassword() {
   let password = passArray.join('');
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
-  alert(password);
 }
 
 // Add event listener to generate button

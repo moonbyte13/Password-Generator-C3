@@ -2,11 +2,12 @@
 
 ## Description
 I love JS. I did alot of js back in highschool.<br>
-I did not have many issues with this challenge.<br>
+I did not have many issues with this challenge.
 <br><br>
 10 minutes later I deleted the folder holding all my files...
 <br><br>
-
+We made it back! rebuilt but not better haha
+<br>
 ## Deployment Link 🔗
 
 <br>
@@ -52,6 +53,7 @@ THEN the password is either displayed in an alert or written to the page
 <br>
 
 ## Credits
+Credits to my tutor Stephanie who helped me breakdown this challenge
 <br>
 
 ## Licence 🔑
