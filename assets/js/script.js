@@ -138,7 +138,7 @@ function userData() {
 }
 // Password array
 let passArray = [];
-let orderLength = passLength
+let orderLength = passLength;
 
 // Function generate password
 function generatePassword() {
@@ -151,6 +151,7 @@ function generatePassword() {
     }
     if (uppercaseTrue == true && passLength > 0) {
       passArray.push(uppercaseRan);
+      passLength --;
     }
     if (symbolsTrue == true && passLength > 0) {
       passArray.push(symbolsRan);
@@ -162,17 +163,6 @@ function generatePassword() {
     }
   }
   console.log(passArray)
-  // Randomize the order
-  /* while (orderLength > 0) {
-    let ranOrder = Math.floor(Math.random() * orderLength);
-    orderLength --;
-    console.log(orderLength)
-    // Swap it with the current element.
-    let tmp = passArray[orderLength];
-    passArray[orderLength] = passArray[ranOrder];
-    passArray[ranOrder] = tmp;
-    console.log(passArray)
-  } */
 }
 
 // Randomizer variables
