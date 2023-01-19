@@ -108,7 +108,7 @@ let numbers = [
 // User variables
 let passLength = 0;
 let lowercaseTrue = false;
-let uppercaseTrue = false;
+let uppercaseTrue = false
 let symbolsTrue = false;
 let numbersTrue = false;
 
@@ -117,7 +117,7 @@ function userData() {
   // Password length prompt
   passLength = prompt('What length do you want the password to be?');
 
-  if (NaN[passLength]) {
+  if (isNaN[passLength]) {
     alert('INVALID ENTRY, NOT A NUMBER');
     return;
   };
@@ -126,13 +126,10 @@ function userData() {
     return; 
   };
   // Criteria prompts
-  const criteria = [
-    lowercaseTrue = confirm('Do you want lowercase?'),
-    uppercaseTrue = confirm('Do you want uppercase?'),
-    symbolsTrue = confirm('Do you want symbols?'),
-    numbersTrue = confirm('Do you want numbers?')
-  ];
-  
+  lowercaseTrue = confirm('Do you want lowercase?');
+  uppercaseTrue = confirm('Do you want uppercase?');
+  symbolsTrue = confirm('Do you want symbols?');
+  numbersTrue = confirm('Do you want numbers?');
 
   if (lowercaseTrue == false && uppercaseTrue == false && symbolsTrue == false && numbersTrue == false) {
     alert('INVALID, NOT A STRONG ENOUGH PASSWORD');
@@ -140,51 +137,67 @@ function userData() {
   };
 }
 // Password array
-const passArray = [''];
+let passArray = [];
+let orderLength = passLength
 
 // Function generate password
 function generatePassword() {
-  while (passLength == !0) {
-    if (criteria.lowercaseTrue == true && passLength >= 0) {
+  // Push character to array
+  while (passLength > 0) {
+    randomizer();
+    if (lowercaseTrue == true && passLength > 0) {
       passArray.push(lowercaseRan);
+      passLength --;
     }
-    if (criteria.uppercaseTrue == true && passLength >= 0) {
+    if (uppercaseTrue == true && passLength > 0) {
       passArray.push(uppercaseRan);
     }
-    if (criteria.symbolsTrue == true && passLength >= 0) {
-      passArray.push(symbolRan);
+    if (symbolsTrue == true && passLength > 0) {
+      passArray.push(symbolsRan);
+      passLength --;
     }
-    if (criteria.numbersTrue == true && passLength >= 0) {
-      passArray.push(numberRan);
+    if (numbersTrue == true && passLength > 0) {
+      passArray.push(numbersRan);
+      passLength --;
     }
   }
+  console.log(passArray)
+  // Randomize the order
+  /* while (orderLength > 0) {
+    let ranOrder = Math.floor(Math.random() * orderLength);
+    orderLength --;
+    console.log(orderLength)
+    // Swap it with the current element.
+    let tmp = passArray[orderLength];
+    passArray[orderLength] = passArray[ranOrder];
+    passArray[ranOrder] = tmp;
+    console.log(passArray)
+  } */
 }
 
 // Randomizer variables
 let lowercaseRan = 0;
 let uppercaseRan = 0;
-let symbolRan = 0;
-let numberRan = 0;
-let criteriaRan = 0;
+let symbolsRan = 0;
+let numbersRan = 0;
 
 // Randomizer function
 function randomizer() {
-  lowercaseRan = Math.floor(Math.random() * (lowercase.length));
-  uppercaseRan = Math.floor(Math.random() * (uppercase.length));
-  symbolRan = Math.floor(Math.random() * (symbols.length));
-  numberRan = Math.floor(Math.random() * (numbers.length));
-  criteriaRan = Math.floor()
+  lowercaseRan = lowercase[Math.floor(Math.random() * (lowercase.length))];
+  uppercaseRan = uppercase[Math.floor(Math.random() * (uppercase.length))];
+  symbolsRan = symbols[Math.floor(Math.random() * (symbols.length))];
+  numbersRan = numbers[Math.floor(Math.random() * (numbers.length))];
 }
-
 
 // Write password to the #password input
 function writePassword() {
+  passArray = ['']
   userData();
-  randomizer();
- /*  let password = generatePassword();
+  generatePassword();
+  let password = passArray.join('');
   let passwordText = document.querySelector("#password");
-  passwordText.value = password; */
-  
+  passwordText.value = password;
+  alert(password);
 }
 
 // Add event listener to generate button
