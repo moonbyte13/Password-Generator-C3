@@ -196,7 +196,7 @@ function generatePassword() {
   }
 }
 
-/* let match = false
+let match = false
 // Function Check arrays
 function compare (arr1, arr2) {
   let i = arr1.length
@@ -210,7 +210,7 @@ function compare (arr1, arr2) {
     }
     i --;
   }
-} */
+}
 
 
 
