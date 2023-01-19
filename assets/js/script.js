@@ -167,49 +167,38 @@ function generatePassword() {
   }
 
   if (lowercaseTrue === true) {
-    compare(passArray, lowercase)
-    if (match === false) {
-      console.log('trying again');
-      generatePassword();
-    }
+    compare(lowercase, passArray);
   }
   if (uppercaseTrue === true) {
-    compare(passArray, uppercase)
-    if (match === false) {
-      console.log('trying again');
-      generatePassword();
-    }
+    compare(uppercase, passArray);
   }
   if (symbolsTrue === true) {
-    compare(passArray, symbols)
-    if (match === false) {
-      console.log('trying again');
-      generatePassword();
-    }
+    compare(symbols, passArray);
   }
   if (numbersTrue === true) {
-    compare(passArray, numbers)
-    if (match === false) {
-      console.log('trying again');
-      generatePassword();
-    }
+    compare(numbers, passArray);
   }
 }
 
-let match = false
+let noMatch = false;
 // Function Check arrays
 function compare (arr1, arr2) {
   let i = arr1.length
-  while (i !== 0) {
+  while (i >= 0) {
     if (arr1.indexOf(arr2[i]) === -1) {
-      console.log('character ' + (arr1.length - i) + ' no match')
-      match = false;
+      console.log(arr1[i] + ' and ' + arr2[i] + ', no match');
+      i --;
+      noMatch = true;
     } else {
-      console.log('all good')
-      match = true;
+      console.log(arr1[i] + ' and ' + arr2[i] + ', all good');
+      i --;
+      return true;
     }
-    i --;
   }
+  /* if (noMatch === true) {
+    console.log('trying again');
+      generatePassword();
+  } */
 }
 
 
