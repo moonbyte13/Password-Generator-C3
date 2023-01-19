@@ -140,44 +140,84 @@ function userData() {
 
 // Password array
 let passArray = [];
+let ranArray = [];
+
+// Checking arrayPass to confirm it contains the criteria met
 
 // Function generate password
 function generatePassword() {
-  // Push character to array
+
+  if (lowercaseTrue === true && passLength > 0) {
+    ranArray = ranArray.concat(lowercase);
+  }
+  if (uppercaseTrue == true && passLength > 0) {
+    ranArray = ranArray.concat(uppercase);
+  }
+  if (symbolsTrue == true && passLength > 0) {
+    ranArray = ranArray.concat(symbols);
+  }
+  if (numbersTrue == true && passLength > 0) {
+    ranArray = ranArray.concat(numbers);
+  }
+  
   while (passLength > 0) {
     randomizer();
-    if (lowercaseTrue == true && passLength > 0) {
-      passArray.push(lowercaseRan);
-      passLength --;
-    }
-    if (uppercaseTrue == true && passLength > 0) {
-      passArray.push(uppercaseRan);
-      passLength --;
-    }
-    if (symbolsTrue == true && passLength > 0) {
-      passArray.push(symbolsRan);
-      passLength --;
-    }
-    if (numbersTrue == true && passLength > 0) {
-      passArray.push(numbersRan);
-      passLength --;
+    passArray.push(ranArray[random]);
+    passLength --;
+  }
+
+  if (lowercaseTrue === true) {
+    compare(passArray, lowercase)
+    if (match === false) {
+      console.log('trying again');
+      generatePassword();
     }
   }
-  console.log(passArray)
+  if (uppercaseTrue === true) {
+    compare(passArray, uppercase)
+    if (match === false) {
+      console.log('trying again');
+      generatePassword();
+    }
+  }
+  if (symbolsTrue === true) {
+    compare(passArray, symbols)
+    if (match === false) {
+      console.log('trying again');
+      generatePassword();
+    }
+  }
+  if (numbersTrue === true) {
+    compare(passArray, numbers)
+    if (match === false) {
+      console.log('trying again');
+      generatePassword();
+    }
+  }
 }
 
-// Randomizer variables
-let lowercaseRan = 0;
-let uppercaseRan = 0;
-let symbolsRan = 0;
-let numbersRan = 0;
+let match = false
+// Function Check arrays
+function compare (arr1, arr2) {
+  let i = arr1.length
+  while (i !== 0) {
+    if (arr1.indexOf(arr2[i]) === -1) {
+      console.log('character ' + (arr1.length - i) + ' no match')
+      match = false;
+    } else {
+      console.log('all good')
+      match = true;
+    }
+    i --;
+  }
+}
 
+
+
+let random = 0
 // Randomizer function
 function randomizer() {
-  lowercaseRan = lowercase[Math.floor(Math.random() * (lowercase.length))];
-  uppercaseRan = uppercase[Math.floor(Math.random() * (uppercase.length))];
-  symbolsRan = symbols[Math.floor(Math.random() * (symbols.length))];
-  numbersRan = numbers[Math.floor(Math.random() * (numbers.length))];
+  random = [Math.floor(Math.random() * ranArray.length)]
 }
 
 // Write password to the #password input
