@@ -32,7 +32,8 @@ let symbols = [
 "_",
 "`",
 "|",
-"~"];
+"~"
+];
 // Uppercase
 let uppercase = [
   'A',
@@ -159,60 +160,13 @@ function generatePassword() {
   if (numbersTrue == true && passLength > 0) {
     ranArray = ranArray.concat(numbers);
   }
-  
+  // Place all password characters in an array at random
   while (passLength > 0) {
     randomizer();
     passArray.push(ranArray[random]);
     passLength --;
   }
-
-  if (lowercaseTrue === true) {
-    compare(passArray, lowercase)
-    if (match === false) {
-      console.log('trying again');
-      generatePassword();
-    }
-  }
-  if (uppercaseTrue === true) {
-    compare(passArray, uppercase)
-    if (match === false) {
-      console.log('trying again');
-      generatePassword();
-    }
-  }
-  if (symbolsTrue === true) {
-    compare(passArray, symbols)
-    if (match === false) {
-      console.log('trying again');
-      generatePassword();
-    }
-  }
-  if (numbersTrue === true) {
-    compare(passArray, numbers)
-    if (match === false) {
-      console.log('trying again');
-      generatePassword();
-    }
-  }
 }
-
-/* let match = false
-// Function Check arrays
-function compare (arr1, arr2) {
-  let i = arr1.length
-  while (i !== 0) {
-    if (arr1.indexOf(arr2[i]) === -1) {
-      console.log('character ' + (arr1.length - i) + ' no match')
-      match = false;
-    } else {
-      console.log('all good')
-      match = true;
-    }
-    i --;
-  }
-} */
-
-
 
 let random = 0
 // Randomizer function

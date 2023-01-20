@@ -1,15 +1,18 @@
 # Module-3-Challenge
 
 ## Description
-I love JS. I did alot of js back in highschool.<br>
-I did not have many issues with this challenge.
-<br><br>
-10 minutes later I deleted the folder holding all my files...
-<br><br>
-We made it back! rebuilt but not better haha
+I accidentally deleted the folder holding all my files...
 <br>
-## Deployment Link 🔗
+We made it back!
+<br>
+I can't seem to figure out how to confirm whether all the criteria selected is included in the password.
+<br>
+You can see my current attempt under branch feature/check.
+<br>
 
+## Deployment Link 🔗
+[Deployment](https://xmoonphasex.github.io/Password-Generator-C3/)<br>
+[Repo](https://github.com/XMoonphaseX/Password-Generator-C3)
 <br>
 
 ## User Story 📘
