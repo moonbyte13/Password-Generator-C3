@@ -4,11 +4,9 @@ let generateBtn = document.querySelector("#generate");
 let symbols = [
 "!",
 "#",
-'"',
 "$",
 "%",
 "&",
-"'",
 "(",
 ")",
 "[",
@@ -32,7 +30,8 @@ let symbols = [
 "_",
 "`",
 "|",
-"~"];
+"~"
+];
 // Uppercase
 let uppercase = [
   'A',
@@ -146,6 +145,8 @@ let ranArray = [];
 
 // Function generate password
 function generatePassword() {
+  
+  let tg = false;
 
   if (lowercaseTrue === true && passLength > 0) {
     ranArray = ranArray.concat(lowercase);
@@ -167,38 +168,64 @@ function generatePassword() {
   }
 
   if (lowercaseTrue === true) {
-    compare(lowercase, passArray);
+    if (compare(passArray, lowercase) === false){
+      console.log('trying again')
+      console.log('false, no lowercase match')
+    }
   }
   if (uppercaseTrue === true) {
-    compare(uppercase, passArray);
+    if (compare(passArray, uppercase) === false){
+      console.log('trying again')
+      console.log('false, no uppercase match')
+    }
   }
   if (symbolsTrue === true) {
-    compare(symbols, passArray);
+    if (compare(passArray, symbols) === false){
+      console.log('trying again')
+      console.log('false, no symbols match')
+    }
   }
   if (numbersTrue === true) {
-    compare(numbers, passArray);
+    if (compare(passArray, numbers) === false){
+      console.log('trying again')
+      console.log('false, no numbers match')
+    }
   }
 }
 
-let noMatch = false;
+
 // Function Check arrays
 function compare (arr1, arr2) {
-  let i = arr1.length
-  while (i >= 0) {
-    if (arr1.indexOf(arr2[i]) === -1) {
-      console.log(arr1[i] + ' and ' + arr2[i] + ', no match');
-      i --;
-      noMatch = true;
-    } else {
-      console.log(arr1[i] + ' and ' + arr2[i] + ', all good');
-      i --;
+  let noMatch = false;
+  let i = 0;
+  let match = 0;
+  console.log(passArray);
+  while (i < arr1.length) {
+    console.log(arr1[i]);
+    console.log(arr2);
+    match = arr2.indexOf(arr1[i]);
+    if (match !== -1) {
+      console.log('Match! There is a ' + '"' + arr1[i] + '"' + ' at position ' + (match + 1)+ ' of ' + arr2);
       return true;
     }
+    i ++;
   }
-  /* if (noMatch === true) {
-    console.log('trying again');
-      generatePassword();
-  } */
+  return false;
+
+  /* let i = 0
+  while (i <= arr2.length) {
+    if (arr1.indexOf(arr2[i]) === -1) {
+      console.log(arr1[i] + ' and ' + arr2[i] + ', no match');
+      matchFalse = true
+    }
+    if (arr1.indexOf(arr2[i]) === 1) {
+      console.log(arr1[i] + ' and ' + arr2[i] + ', all good');
+      return true;
+    }
+    i ++;
+  }
+  console.log('trying again');
+  return false; */
 }
 
 
@@ -211,7 +238,7 @@ function randomizer() {
 
 // Write password to the #password input
 function writePassword() {
-  passArray = ['']
+  passArray = [];
   userData();
   let password = passArray.join('');
   let passwordText = document.querySelector("#password");
