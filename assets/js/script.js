@@ -145,9 +145,8 @@ let ranArray = [];
 
 // Function generate password
 function generatePassword() {
-  
-  let tg = false;
-
+  passArray = [];
+  ranArray = [];
   if (lowercaseTrue === true && passLength > 0) {
     ranArray = ranArray.concat(lowercase);
   }
@@ -160,35 +159,42 @@ function generatePassword() {
   if (numbersTrue == true && passLength > 0) {
     ranArray = ranArray.concat(numbers);
   }
-  
+
   while (passLength > 0) {
     randomizer();
     passArray.push(ranArray[random]);
     passLength --;
   }
-
   if (lowercaseTrue === true) {
     if (compare(passArray, lowercase) === false){
-      console.log('trying again')
       console.log('false, no lowercase match')
+      /* passArray = [];
+      ranArray = [];
+      generatePassword(); */
     }
   }
   if (uppercaseTrue === true) {
     if (compare(passArray, uppercase) === false){
-      console.log('trying again')
       console.log('false, no uppercase match')
+      /* passArray = [];
+      ranArray = [];
+      generatePassword(); */
     }
   }
   if (symbolsTrue === true) {
     if (compare(passArray, symbols) === false){
-      console.log('trying again')
       console.log('false, no symbols match')
+      /* passArray = [];
+      ranArray = [];
+      generatePassword(); */
     }
   }
   if (numbersTrue === true) {
     if (compare(passArray, numbers) === false){
-      console.log('trying again')
       console.log('false, no numbers match')
+      /* passArray = [];
+      ranArray = [];
+      generatePassword(); */
     }
   }
 }
@@ -201,7 +207,7 @@ function compare (arr1, arr2) {
   let match = 0;
   console.log(passArray);
   while (i < arr1.length) {
-    console.log(arr1[i]);
+    console.log(arr1);
     console.log(arr2);
     match = arr2.indexOf(arr1[i]);
     if (match !== -1) {
