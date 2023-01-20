@@ -104,111 +104,111 @@ let numbers = [
   '9'
 ];
 
-// User variables
 let passLength = 0;
 let lowercaseTrue = false;
-let uppercaseTrue = false
+let uppercaseTrue = false;
 let symbolsTrue = false;
 let numbersTrue = false;
 
 // Function user data
 function userData() {
+  ranArray = [];
   // Password length prompt
-  passLength = prompt('What length do you want the password to be?');
+  passLength = prompt('What length do you want the password to be? 8-128');
 
   if (isNaN(passLength)) {
     alert('INVALID ENTRY, NOT A NUMBER');
-    return;
-  };
+    return null;
+  }
   if (passLength < 8 || passLength > 128) {
     alert('INVALID, OUT OF PARAMETER');
-    return;
-  };
+    return null;
+  }
   // Criteria prompts
-    lowercaseTrue = confirm('Do you want lowercase?');
-    uppercaseTrue = confirm('Do you want uppercase?');
-    symbolsTrue = confirm('Do you want symbols?');
-    numbersTrue = confirm('Do you want numbers?');
+  lowercaseTrue = confirm('Do you want lowercase?');
+  uppercaseTrue = confirm('Do you want uppercase?');
+  symbolsTrue = confirm('Do you want symbols?');
+  numbersTrue = confirm('Do you want numbers?');
 
-  if (lowercaseTrue == false && uppercaseTrue == false && symbolsTrue == false && numbersTrue == false) {
+  if (
+    lowercaseTrue == false &&
+    uppercaseTrue == false &&
+    symbolsTrue == false &&
+    numbersTrue == false
+  ) {
     alert('INVALID, NOT A STRONG ENOUGH PASSWORD');
-    return;
+    return null;
+  }
+  // Object criteria
+  let passOptions = {
+    passLength : passLength,
+    lowercaseTrue : lowercaseTrue,
+    uppercaseTrue : uppercaseTrue,
+    symbolsTrue : symbolsTrue,
+    numbersTrue : numbersTrue,
   };
-  generatePassword();
-};
+  return passOptions;
+}
 
 // Password array
 let passArray = [];
 let ranArray = [];
 
-// Checking arrayPass to confirm it contains the criteria met
-
 // Function generate password
 function generatePassword() {
-  passArray = [];
-  ranArray = [];
-  if (lowercaseTrue === true && passLength > 0) {
+  let criteria = userData();
+  if (criteria.lowercaseTrue === true && passLength > 0) {
     ranArray = ranArray.concat(lowercase);
   }
-  if (uppercaseTrue == true && passLength > 0) {
+  if (criteria.uppercaseTrue == true && passLength > 0) {
     ranArray = ranArray.concat(uppercase);
   }
-  if (symbolsTrue == true && passLength > 0) {
+  if (criteria.symbolsTrue == true && passLength > 0) {
     ranArray = ranArray.concat(symbols);
   }
-  if (numbersTrue == true && passLength > 0) {
+  if (criteria.numbersTrue == true && passLength > 0) {
     ranArray = ranArray.concat(numbers);
   }
-
   while (passLength > 0) {
     randomizer();
     passArray.push(ranArray[random]);
     passLength --;
   }
-  if (lowercaseTrue === true) {
-    if (compare(passArray, lowercase) === false){
+  console.log(passArray);
+  if (criteria.lowercaseTrue == true) {
+    if (compare(passArray, lowercase) == false){
       console.log('false, no lowercase match')
-      /* passArray = [];
-      ranArray = [];
-      generatePassword(); */
+      return null;
     }
   }
-  if (uppercaseTrue === true) {
-    if (compare(passArray, uppercase) === false){
+  if (criteria.uppercaseTrue == true) {
+    if (compare(passArray, uppercase) == false){
       console.log('false, no uppercase match')
-      /* passArray = [];
-      ranArray = [];
-      generatePassword(); */
+      return null;
     }
   }
-  if (symbolsTrue === true) {
-    if (compare(passArray, symbols) === false){
+  if (criteria.symbolsTrue == true) {
+    if (compare(passArray, symbols) == false){
       console.log('false, no symbols match')
-      /* passArray = [];
-      ranArray = [];
-      generatePassword(); */
+      return null;
     }
   }
-  if (numbersTrue === true) {
-    if (compare(passArray, numbers) === false){
+  if (criteria.numbersTrue == true) {
+    if (compare(passArray, numbers) == false){
       console.log('false, no numbers match')
-      /* passArray = [];
-      ranArray = [];
-      generatePassword(); */
+      return null;
     }
   }
+  return passArray.join('');
 }
-
 
 // Function Check arrays
 function compare (arr1, arr2) {
-  let noMatch = false;
   let i = 0;
   let match = 0;
-  console.log(passArray);
   while (i < arr1.length) {
-    console.log(arr1);
-    console.log(arr2);
+    /* console.log(arr1);
+    console.log(arr2); */
     match = arr2.indexOf(arr1[i]);
     if (match !== -1) {
       console.log('Match! There is a ' + '"' + arr1[i] + '"' + ' at position ' + (match + 1)+ ' of ' + arr2);
@@ -217,24 +217,7 @@ function compare (arr1, arr2) {
     i ++;
   }
   return false;
-
-  /* let i = 0
-  while (i <= arr2.length) {
-    if (arr1.indexOf(arr2[i]) === -1) {
-      console.log(arr1[i] + ' and ' + arr2[i] + ', no match');
-      matchFalse = true
-    }
-    if (arr1.indexOf(arr2[i]) === 1) {
-      console.log(arr1[i] + ' and ' + arr2[i] + ', all good');
-      return true;
-    }
-    i ++;
-  }
-  console.log('trying again');
-  return false; */
 }
-
-
 
 let random = 0
 // Randomizer function
@@ -245,10 +228,14 @@ function randomizer() {
 // Write password to the #password input
 function writePassword() {
   passArray = [];
-  userData();
-  let password = passArray.join('');
-  let passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  console.log(password)
+  if (password !== null) {
+    let passwordText = document.querySelector("#password");
   passwordText.value = password;
+  }else {
+    alert('error, not all criteria could not be met, please try again');
+  }
 }
 
 // Add event listener to generate button
