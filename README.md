@@ -11,8 +11,8 @@ You can see my current attempt under branch feature/check.
 <br>
 
 ## Deployment Link 🔗
-[Deployment](https://xmoonphasex.github.io/Password-Generator-C3/)<br>
-[Repo](https://github.com/XMoonphaseX/Password-Generator-C3)
+[Deployment](https://moonphase13.github.io/Password-Generator-C3/)<br>
+[Repo](https://github.com/moonphase13/Password-Generator-C3)
 <br>
 
 ## User Story 📘
@@ -60,4 +60,4 @@ Credits to my tutor Stephanie who helped me breakdown this challenge
 <br>
 
 ## Licence 🔑
-MIT © XMoonphaseX
+MIT © moonphase13
